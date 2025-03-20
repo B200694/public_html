@@ -42,15 +42,16 @@ if (!$data) {
         	$gene_name = $seq['gene_name'];
         	$sequence = $seq['sequence'];
 		$sequence_length = $seq['sequence_length'];
+		$tax_id = $seq['tax_id'];
 
 		$stmt = $pdo->prepare("
 			INSERT IGNORE INTO sequences (
         			accession_id, organism, protein_name, gene_name,
-        			sequence_length, sequence, taxonomic_group
-    			) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        			sequence_length, sequence, taxonomic_group, tax_id
+    			) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 		$stmt->execute([
-    			$accession_id, $organism, $protein_name, $gene_name, $sequence_length, $sequence, $taxon
+    			$accession_id, $organism, $protein_name, $gene_name, $sequence_length, $sequence, $taxon, $tax_id
 		]);
 	}
 }

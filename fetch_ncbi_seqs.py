@@ -29,12 +29,15 @@ def fetch_seqs(taxon, protein_family) :
         # Search through features for protein & gene name
         gene_name = "Unknown"
         protein_name = "Unknown"
+        tax_id = "Unknown"
         for feature in record.features:
             if feature.type == "CDS":
                 gene_name = feature.qualifiers.get("gene", ["Unknown"])[0]
             if feature.type == "Protein":
                 protein_name =  feature.qualifiers.get("product", ["Unknown"])[0]
-        
+            if feature.type == "source":
+                tax_id = feature.qualifiers.get("db_xref", ["Unknown"])[0].replace("taxon:", "")
+
         # Append the parsed data to the list
         sequences.append({
             "accession_id": accession_id,
@@ -44,6 +47,7 @@ def fetch_seqs(taxon, protein_family) :
             "sequence": sequence,
             "sequence_length": sequence_length,
             "taxon": taxon,
+            "tax_id": tax_id,
             })
 
     # Return the parsed data as JSON

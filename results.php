@@ -45,6 +45,7 @@ $results = $stmt->fetchAll();
             <tr>
 		<th>Accession ID</th>
 		<th>Taxonomic Group</th>
+		<th>TaxID</th>
                 <th>Organism</th>
                 <th>Protein Name</th>
                 <th>Gene Name</th>
@@ -57,6 +58,7 @@ $results = $stmt->fetchAll();
             <tr>
 		<td><?php echo htmlspecialchars($row['accession_id']); ?></td>
 		<td><?php echo htmlspecialchars($row['taxonomic_group']); ?></td>
+		<td><?php echo htmlspecialchars($row['tax_id']); ?></td>
                 <td><?php echo htmlspecialchars($row['organism']); ?></td>
                 <td><?php echo htmlspecialchars($row['protein_name']); ?></td>
                 <td><?php echo htmlspecialchars($row['gene_name']); ?></td>
