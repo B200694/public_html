@@ -1,0 +1,156 @@
+/* Reset default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Tahoma, sans-serif;
+    padding: 10px;
+    background-color: #FEFDF7;
+    color: #121212;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* Text selection styles */
+::selection {
+    background-color: #BBE06A; /* Highlight background color */
+    color: #FEFDF7; /* Highlight text color */
+}
+
+/* Header styles */
+header {
+    font-family: Tahoma, sans-serif;
+    background-color: #386E8C;
+    color: #FEFDF7;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Navigation styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #FEFDF7;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #BBE06A;
+}
+
+/* Main content styles */
+main {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Form styles */
+
+form {
+    border-radius: 10px;
+}
+
+label {
+}
+
+button {
+    background-color: #386E8C;
+    color: #ffffff;
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Full width button */
+    font-size: 16px;
+    margin-top: 10px; /* Adds space above the button */
+}
+
+/* Table styles */
+
+table, th, td {
+    border-collapse: collapse;
+    border: 2px solid #FEFDF7;
+    padding: 8px;
+    width: 100%;
+    table-layout: fixed;
+}
+
+th {
+    background: #386E8C;
+    color: #FEFDF7;
+    font-size: 14px;
+}
+
+td {
+    font-size: 12px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #CCD2D8;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #E7EAED;
+}
+
+th:nth-child(5), td:nth-child(5), th:nth-child(6), th:nth-child(6) {
+    width: 75%;
+}
+
+th:nth-child(7), td:nth-child(7) {
+    width: 200%;
+}
+
+.table-container {
+    /* max-width: 200px; Adjust width as needed */
+    overflow-x: auto;
+    white-space: nowrap;
+    display: block;  /* Ensures proper scrolling behavior */
+}
+
+.table-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Footer styles */
+footer {
+    font-family: Tahoma, sans-serif;
+    background-color: #386E8C;
+    color: #BBE06A;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
