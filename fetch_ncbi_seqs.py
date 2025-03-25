@@ -9,7 +9,9 @@ def fetch_seqs(taxon, protein_family) :
     # Initialise search
     Entrez.email = "s2150996@ed.ac.uk"
     Entrez.api_key = "bb315041260b19996a8e2a6cbbedfd2b9308"
-    query = f'"{taxon}"[Organism] AND "{protein_family}"[Protein]'
+    
+    # Construct query using NCBI's standard format
+    query = f'({taxon}[Organism]) AND ({protein_family}[Protein])'
     
     # Execute search
     handle = Entrez.esearch(db="protein", term=query) # search results stored in XML format
@@ -34,11 +36,10 @@ def fetch_seqs(taxon, protein_family) :
             if feature.type == "CDS":
                 gene_name = feature.qualifiers.get("gene", ["Unknown"])[0]
             if feature.type == "Protein":
-                protein_name =  feature.qualifiers.get("product", ["Unknown"])[0]
+                protein_name = feature.qualifiers.get("product", ["Unknown"])[0]
             if feature.type == "source":
                 tax_id = feature.qualifiers.get("db_xref", ["Unknown"])[0].replace("taxon:", "")
 
-        # Append the parsed data to the list
         sequences.append({
             "accession_id": accession_id,
             "organism": organism,
@@ -46,7 +47,6 @@ def fetch_seqs(taxon, protein_family) :
             "gene_name": gene_name,
             "sequence": sequence,
             "sequence_length": sequence_length,
-            "taxon": taxon,
             "tax_id": tax_id,
             })
 

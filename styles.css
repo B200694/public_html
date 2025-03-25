@@ -82,9 +82,6 @@ form {
     border-radius: 10px;
 }
 
-label {
-}
-
 button {
     background-color: #386E8C;
     color: #ffffff;
@@ -94,6 +91,7 @@ button {
     cursor: pointer;
     width: 100%; /* Full width button */
     font-size: 16px;
+    font-weight: bold;
     margin-top: 10px; /* Adds space above the button */
 }
 
@@ -125,11 +123,11 @@ tbody tr:nth-child(even) {
     background-color: #E7EAED;
 }
 
-th:nth-child(3), td:nth-child(3), th:nth-child(6), td:nth-child(6), th:nth-child(7), th:nth-child(7) {
+th:nth-child(1), td:nth-child(1), th:nth-child(2), td:nth-child(2), th:nth-child(5), td:nth-child(5) {
     width: 75%;
 }
 
-th:nth-child(8), td:nth-child(8) {
+th:nth-child(7), td:nth-child(7) {
     width: 200%;
 }
 
@@ -153,4 +151,123 @@ footer {
     padding: 20px;
     text-align: center;
     width: 100%;
+}
+
+.example-buttons {
+    margin: 20px 0;
+    text-align: left;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.example-buttons label {
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.example-buttons button {
+    margin: 0;
+    padding: 4px 8px;
+    background-color: #e0e0e0;
+    color: #121212;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 12px;
+    width: auto;
+}
+
+.example-buttons button:hover {
+    background-color: #BBE06A;
+}
+
+/* Analysis Controls Styles */
+.analysis-controls {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.analysis-controls h3 {
+    color: #386E8C;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.filter-section, .plotcon-options {
+    margin-bottom: 20px;
+}
+
+.filter-group, .plotcon-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-group label, .plotcon-group label {
+    min-width: 150px;
+    font-size: 14px;
+}
+
+.filter-group input, .plotcon-group input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+}
+
+.analysis-button {
+    background-color: #BBE06A;
+    color: #121212;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: auto;
+    margin: 10px 0;
+}
+
+.analysis-button:hover {
+    background-color: #a8d55f;
+}
+
+/* Plot Container Styles */
+.plot-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+
+.plot-container img {
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.analysis-summary {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.analysis-summary p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.analysis-summary strong {
+    color: #386E8C;
 }

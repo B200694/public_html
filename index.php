@@ -1,3 +1,7 @@
+<?php
+// Start session for potential session messages
+require_once 'includes/session_manager.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,19 +24,37 @@
     </header>
     <hr style="border: 0; height: 6px; background-color: #EE9292;">
     <main>
-	<form action="search.php" method="POST">
+        <form action="search.php" method="get">
+            <label for="taxon">Taxonomic Group:</label>
+            <input type="text" id="taxon" name="taxon" placeholder="e.g Aves" required>
 
-        	<label for="taxon">Taxonomic Group:</label>
-		<input type="text" id="taxon" name="taxon" placeholder="e.g Aves" required>
+            <label for="protein_family">Protein Family:</label>
+            <input type="text" id="protein_family" name="protein_family" placeholder="e.g glucose-6-phosphatase" required>
 
-                <label for="protein_family">Protein Family:</label>
-                <input type="text" id="protein_family" name="protein_family" placeholder="e.g glucose-6-phosphatase" required>
-
-        	<button type="submit">Search</button>
-    	</form>
+            <div class="example-buttons">
+                <label>Examples:</label>
+                <button type="button" onclick="fillExample1()">1</button>
+                <button type="button" onclick="fillExample2()">2</button>
+            </div>
+            
+            <button type="submit">Search</button>
+        </form>
+        
     </main>
     <footer>
-	    <p><b>&copy; 2025 B200694 </b></p>
+        <p><b>&copy; 2025 B200694 </b></p>
     </footer>
+
+    <script>
+        function fillExample1() {
+            document.getElementById('taxon').value = 'Aves';
+            document.getElementById('protein_family').value = 'glucose-6-phosphatase';
+        }
+
+        function fillExample2() {
+            document.getElementById('taxon').value = 'Arabidopsis';
+            document.getElementById('protein_family').value = 'acetyl-CoA carboxylase';
+        }
+    </script>
 </body>
 </html>
