@@ -1,6 +1,8 @@
 <?php
 // Start session for potential session messages
 require_once 'includes/session_manager.php';
+session_regenerate_id(true);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,22 +26,25 @@ require_once 'includes/session_manager.php';
     </header>
     <hr style="border: 0; height: 6px; background-color: #EE9292;">
     <main>
-        <form action="search.php" method="get">
-            <label for="taxon">Taxonomic Group:</label>
-            <input type="text" id="taxon" name="taxon" placeholder="e.g Aves" required>
-
-            <label for="protein_family">Protein Family:</label>
-            <input type="text" id="protein_family" name="protein_family" placeholder="e.g glucose-6-phosphatase" required>
-
-            <div class="example-buttons">
-                <label>Examples:</label>
-                <button type="button" onclick="fillExample1()">1</button>
-                <button type="button" onclick="fillExample2()">2</button>
-            </div>
-            
-            <button type="submit">Search</button>
-        </form>
-        
+        <div class = "search-container">
+            <form action="search.php" method="get">
+                <div class="form-group">
+                    <label for="taxon">Taxonomic Group:</label>
+                    <input type="text" id="taxon" name="taxon" placeholder="e.g Aves" required>
+                </div>
+                <div class="form-group">
+                    <label for="protein_family">Protein Family:</label>
+                    <input type="text" id="protein_family" name="protein_family" placeholder="e.g glucose-6-phosphatase" required>
+                </div>
+                <div class="example-buttons">
+                    <label>Examples:</label>
+                    <button type="button" onclick="fillExample1()">1</button>
+                    <button type="button" onclick="fillExample2()">2</button>
+                </div>
+                
+                <button type="submit">Search</button>
+            </form>
+        </div>
     </main>
     <footer>
         <p><b>&copy; 2025 B200694 </b></p>

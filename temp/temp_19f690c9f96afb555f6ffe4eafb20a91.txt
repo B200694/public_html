@@ -1,0 +1,35 @@
+########################################
+# Program: patmatmotifs
+# Rundate: Tue  1 Apr 2025 18:24:29
+# Commandline: patmatmotifs
+#    -full
+#    -sequence temp/temp_19f690c9f96afb555f6ffe4eafb20a91.fasta
+#    -outfile temp/temp_19f690c9f96afb555f6ffe4eafb20a91.txt
+# Report_format: dbmotif
+# Report_file: temp/temp_19f690c9f96afb555f6ffe4eafb20a91.txt
+########################################
+
+#=======================================
+#
+# Sequence: KAF1627266.1     from: 1   to: 358
+# HitCount: 1
+#
+# Full: Yes
+# Prune: Yes
+# Data_file: /usr/share/EMBOSS/data/PROSITE/prosite.lines
+#
+#=======================================
+
+Length = 4
+Start = position 139 of sequence
+End = position 142 of sequence
+
+Motif = AMIDATION
+
+LLSTAMGKKQSRTL
+     |  |
+   139  142
+
+
+#---------------------------------------
+#---------------------------------------

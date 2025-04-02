@@ -1,11 +1,11 @@
-/* Reset default margins and padding */
+/* DEFAULT MARGINS AND PADDING */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styles */
+/* BODY STYLES */
 body {
     font-family: Tahoma, sans-serif;
     padding: 10px;
@@ -47,7 +47,7 @@ header p {
     font-size: 0.9em;
 }
 
-/* Navigation styles */
+/* NAVIGATION STYLES */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -69,33 +69,107 @@ nav ul li a:hover {
     color: #BBE06A;
 }
 
-/* Main content styles */
+/* MAIN CONTENT STYLES */
 main {
     flex: 1;
     padding: 20px;
     text-align: center;
 }
 
-/* Form styles */
+/* FORM STYLES */
 
-form {
-    border-radius: 10px;
+/* Main container */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers child horizontally (the form) */
+    background-color: #EAF0F2;
+    border-radius: 8px;
+    padding: 20px;
+    width: 50%;
+    margin: 0 auto;
 }
 
-button {
+/* Form styling */
+.search-container form {
+    width: 100%; /* Form takes full width of container */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form groups */
+}
+
+/* Label-input pairs */
+.form-group {
+    display: flex;
+    align-items: center; /* Vertical centering */
+    gap: 15px; /* Space between label and input */
+}
+
+/* Label styling */
+.form-group label {
+    width: 150px; /* Fixed width for alignment */
+    text-align: right;
+    flex-shrink: 0; /* Prevents shrinking */
+}
+
+/* Input styling */
+.form-group input {
+    flex: 1; /* Takes remaining space */
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    min-width: 0; /* Fixes flexbox overflow issue */
+}
+
+/* Submit button */
+.search-container > form > button[type="submit"] {
     background-color: #386E8C;
     color: #ffffff;
     padding: 14px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%; /* Full width button */
     font-size: 16px;
     font-weight: bold;
-    margin-top: 10px; /* Adds space above the button */
+    margin-top: 6px;
 }
 
-/* Table styles */
+/* EXAMPLE BUTTONS */
+
+.example-buttons {
+    margin: 0;
+    text-align: left;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.example-buttons label {
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.example-buttons button {
+    margin: 0;
+    padding: 4px 8px;
+    background-color: #e0e0e0;
+    color: #121212;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 12px;
+    width: auto;
+    border: none;
+}
+
+.example-buttons button:hover {
+    background-color: #BBE06A;
+}
+
+/* TABLE STYLES */
 
 table, th, td {
     border-collapse: collapse;
@@ -132,7 +206,6 @@ th:nth-child(7), td:nth-child(7) {
 }
 
 .table-container {
-    /* max-width: 200px; Adjust width as needed */
     overflow-x: auto;
     white-space: nowrap;
     display: block;  /* Ensures proper scrolling behavior */
@@ -153,91 +226,100 @@ footer {
     width: 100%;
 }
 
-.example-buttons {
-    margin: 20px 0;
-    text-align: left;
+/* General styles for both containers */
+.analysis-container {
     display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between; /* Space them out evenly */
+    gap: 20px; /* Add space between the divs */
 }
 
-.example-buttons label {
-    margin-right: 10px;
-    font-size: 12px;
-}
-
-.example-buttons button {
-    margin: 0;
-    padding: 4px 8px;
-    background-color: #e0e0e0;
-    color: #121212;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 12px;
-    width: auto;
-}
-
-.example-buttons button:hover {
-    background-color: #BBE06A;
-}
-
-/* Analysis Controls Styles */
-.analysis-controls {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-}
-
-.analysis-controls h3 {
-    color: #386E8C;
-    margin-bottom: 15px;
-    font-size: 16px;
-}
-
-.filter-section, .plotcon-options {
-    margin-bottom: 20px;
-}
-
-.filter-group, .plotcon-group {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-}
-
-.filter-group label, .plotcon-group label {
-    min-width: 150px;
-    font-size: 14px;
-}
-
-.filter-group input, .plotcon-group input {
-    padding: 6px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100px;
-}
-
-.analysis-button {
-    background-color: #BBE06A;
-    color: #121212;
+/* Buttons for both sections */
+.analysis-container button {
     padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
+    transition: background-color 0.3s ease;
     font-weight: bold;
-    width: auto;
-    margin: 10px 0;
 }
 
-.analysis-button:hover {
-    background-color: #a8d55f;
+.analysis-container button:hover {
+    opacity: 0.8;
 }
+
+/* Container for conservation analysis */
+.conservation-analysis {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background-color: #E5F6C0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Container for motif analysis */
+.motif-analysis {
+    flex: 1;
+    background-color: #FAD0D0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the form sections */
+.conservation-options {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    flex-wrap: nowrap;
+}
+
+.conservation-options input {
+    display: flex;
+    flex: 1;
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60px;
+}
+
+/* Specific button styling for conservation analysis */
+.conservation-analysis form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.conservation-analysis-button {
+    display: flex;
+    flex: 1;
+    background-color: #BBE06A;
+    color: white;
+    justify-content: center;
+}
+
+.conservation-analysis-button:hover {
+    background-color: #A4D255;
+}
+
+/* Specific button styling for motif analysis */
+.motif-analysis-button {
+    background-color: #EE9292;
+    color: white;
+    width: 100%;
+}
+
+.motif-analysis-button:hover {
+    background-color: #D67676;
+}
+
 
 /* Plot Container Styles */
 .plot-container {
@@ -253,21 +335,4 @@ footer {
     display: block;
     margin: 0 auto;
     padding: 0;
-}
-
-.analysis-summary {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-}
-
-.analysis-summary p {
-    margin: 10px 0;
-    font-size: 14px;
-}
-
-.analysis-summary strong {
-    color: #386E8C;
 }
