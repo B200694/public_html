@@ -106,6 +106,26 @@ foreach ($sequences as $seq) {
     unlink($temp_motif_output_file);
 }
 
+// Save motif results to a temporary JSON file
+$json_file = "temp/motif_data_{$session_id}.json";
+file_put_contents($json_file, json_encode($motif_results));
+
+// Track the JSON file in session
+if (!isset($_SESSION['temp_files']['data'])) {
+    $_SESSION['temp_files']['data'] = [];
+}
+array_unshift($_SESSION['temp_files']['data'], $json_file);
+
+$command = "python3 plot_motifs.py $json_file $session_id";
+$plot_file = trim(shell_exec($command));
+
+// Track the plot file in session
+if (!isset($_SESSION['temp_files']['plots'])) {
+    $_SESSION['temp_files']['plots'] = [];
+}
+array_unshift($_SESSION['temp_files']['plots'], $plot_file);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -119,12 +139,19 @@ foreach ($sequences as $seq) {
 <body>
     <hr style="border: 0; height: 6px; background-color: #BBE06A;">
     <header>
-        <h1>All The Common Ground</h1>
+        <h1>Protif</h1>
         <p>A tool for exploring protein sequence conservation and motifs across taxonomic groups.</p>
         <nav>
             <ul>
                 <li><a href="index.php">Search</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="help.html">Help</a></li>
+                <li class="dropdown">
+                    <a href="about.html">About</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="content.html">Content</a></li>
+                        <li><a href="credits.html">Credits</a></li>
+                    </ul>  
+                </li>
             </ul>
         </nav>
     </header>
@@ -158,8 +185,37 @@ foreach ($sequences as $seq) {
         </tbody>
     </table>
     <br><br>
+    <div class="plot-container">
+        <img src="<?php echo htmlspecialchars($plot_file); ?>" alt="Motif Plot">
+    </div>
+    <br><br>
     <footer>
-        <p><b>&copy; 2025 B200694 </b></p>
+        <p><b>B200694 IWD2 2025</b></p>
     </footer>
+    <?php
+    // Clean up files that are no longer needed
+    if (isset($_SESSION['temp_files'])) {
+        // Clean up FASTA files
+        foreach (glob("temp/*.fasta") as $file) {
+            if (!in_array($file, $_SESSION['temp_files']['fasta'])) {
+                @unlink($file);
+            }
+        }
+        
+        // Clean up old plot files
+        foreach (glob("temp/*.png") as $file) {
+            if (!in_array($file, $_SESSION['temp_files']['plots'])) {
+                @unlink($file);
+            }
+        }
+        
+        // Clean up NCBI JSON files that are no longer needed
+        foreach (glob("temp/*.json") as $file) {
+            if (!in_array($file, $_SESSION['temp_files']['data'])) {
+                @unlink($file);
+            }
+        }
+    }
+    ?>
 </body>
 </html>

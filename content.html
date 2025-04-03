@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <hr style="border: 0; height: 6px; background-color: #BBE06A;">
+    <header>
+        <h1>Protif</h1>
+        <p>A tool for exploring protein sequence conservation and motifs across taxonomic groups.</p>
+        <nav>
+            <ul>
+                <li><a href="index.php">Search</a></li>
+                <li><a href="help.html">Help</a></li>
+                <li class="dropdown">
+                    <a href="about.html">About</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="content.html">Content</a></li>
+                        <li><a href="credits.html">Credits</a></li>
+                    </ul>  
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <hr style="border: 0; height: 6px; background-color: #EE9292;">
+    <main>
+        <h1>Website Content</h1>
+        <br>
+        <hr style="border: 0; height: 2px; background-color: #386E8C;">
+        <br>
+        <h2>Implementation:</h2>
+        <br>
+        <p>This resource has been implemented using a combination of HTML, CSS, PHP, and JavaScript, and provides access to the local MySQL database using the MySQL PDO driver within PHP.</p>
+        <br>
+        <p>Data not found in the local database is queried from <a href="https://www.ncbi.nlm.nih.gov/">NCBI</a> using E-utilities, via <a href="https://biopython.org/">Biopython's</a> Entrez package</a>.</p>
+        <br>
+        <p>The site employs a session manager script to track user sessions, including the source (database or NCBI), taxon, protein family, and any temporary files required for further analysis.</p>
+        <br>
+        <p>Conservation analysis and motif scanning is performed through the <a href="https://emboss.sourceforge.net/index.html">EMBOSS</a> programmes plotcon and patmatmotif, respectively, with outputs parsed to the frontend using JSON.</p>
+        <br>
+        <p> To check out the source code, check out the github repository <a href="https://github.com/B200694/public_html">here</a>.</p>
+        <br>
+        <hr style="border: 0; height: 2px; background-color: #386E8C;">
+        <br>
+        <h2>MySQL Database:</h2>
+        <br>
+        <p>The local database currently contains only two example datasets: </p>
+        <ul>
+            <li>glucose-6-phosphatase <a href="https://en.wikipedia.org/wiki/Glucose_6-phosphatase">(G6Pase)</a> in Aves <a href="https://en.wikipedia.org/wiki/Bird">(birds)</a></li>
+            <li>acetyl-CoA carboxylase <a href="https://en.wikipedia.org/wiki/Acetyl-CoA_carboxylase">(ACCase)</a> in Arabidopsis <a href="https://en.wikipedia.org/wiki/Thale_cress">(thale cress)</a></li>
+        </ul>
+        <br>
+        <p>This is extremely limited and only serves to demonstrate the functionality of the site. With further development, the local database would be expanded to include more diverse datasets, and the search functionality would be improved to allow for more specific queries. More ideas for further development are discussed below.</p>
+        <br>
+        <hr style="border: 0; height: 2px; background-color: #386E8C;">
+        <br>
+        <h2>Further Development:</h2>
+        <br>
+        <p>Upon further development, the following features could be added:</p>
+        <ul>
+            <li>Search NCBI for fasta sequences rather than genbank (or offer the user a choice!). I originally chose to search for genbank files as they are richer in metadata, but fasta files are far more common and would create a more comprehensive resource.</li>
+            <li>Allow the user to download their data in TSV, CSV, or JSON format.</li>
+            <li>Expand the local database to be more comprehensive.</li>
+            <li>Improve the search functionality by allowing the user to query with accession IDs or user-uploaded sequences.</li>
+            <li>Optimise the site for mobile devices.</li>
+            <li>Provide an interface for users to login and save their search history.</li>
+        </ul>
+        <br>
+        <br>
+    </main>
+    <footer>
+        <p><b>B200694 IWD2 2025</b></p>
+    </footer>
+</body>
+</html>

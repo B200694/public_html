@@ -39,7 +39,7 @@ if ($taxon == "Aves" && $protein_family == "glucose-6-phosphatase") {
 
 } else {
     // Retrieve data from NCBI
-    $output = shell_exec("python3 fetch_ncbi_seqs.py '$taxon' '$protein_family' 2>&1");
+    $output = shell_exec("python3 fetch_ncbi_seqs_gb.py '$taxon' '$protein_family' 2>&1");
     if ($output === null) {
         die("Failed to fetch data from NCBI. Please try again later.");
     }
@@ -79,12 +79,19 @@ if ($taxon == "Aves" && $protein_family == "glucose-6-phosphatase") {
 <body>
     <hr style="border: 0; height: 6px; background-color: #BBE06A;">
     <header>
-        <h1>All The Common Ground</h1>
+        <h1>Protif</h1>
         <p>A tool for exploring protein sequence conservation and motifs across taxonomic groups.</p>
         <nav>
             <ul>
                 <li><a href="index.php">Search</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="help.html">Help</a></li>
+                <li class="dropdown">
+                    <a href="about.html">About</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="content.html">Content</a></li>
+                        <li><a href="credits.html">Credits</a></li>
+                    </ul>  
+                </li>
             </ul>
         </nav>
     </header>
@@ -99,7 +106,7 @@ if ($taxon == "Aves" && $protein_family == "glucose-6-phosphatase") {
     <!-- Conservation Analysis Controls -->
     <div class = "analysis-container">
         <div class="conservation-analysis">
-            <form action="generate_plot.php" method="post" id="analysisForm" onsubmit="console.log('Form submitted with data:', new FormData(this));">
+            <form action="conservation.php" method="post" id="analysisForm" onsubmit="console.log('Form submitted with data:', new FormData(this));">
                 <input type="hidden" name="taxon" value="<?php echo htmlspecialchars($taxon); ?>">
                 <input type="hidden" name="protein_family" value="<?php echo htmlspecialchars($protein_family); ?>">
                 <div class="conservation-options">
@@ -148,7 +155,7 @@ if ($taxon == "Aves" && $protein_family == "glucose-6-phosphatase") {
     </table>
     <br><br>
     <footer>
-        <p><b>&copy; 2025 B200694 </b></p>
+        <p><b>B200694 IWD2 2025</b></p>
     </footer>
 </body>
 </html>

@@ -39,7 +39,7 @@ header {
 }
 
 header h1 {
-    margin: 0;
+    margin-left: 20px;
 }
 
 header p {
@@ -51,7 +51,7 @@ header p {
 nav ul {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin-right: 20px;
     display: flex;
 }
 
@@ -69,11 +69,89 @@ nav ul li a:hover {
     color: #BBE06A;
 }
 
+/* DROPDOWN MENU */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+/* Hide dropdown by default */
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: #386E8C;
+    list-style: none;
+    padding: 5px 0;
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-53%) scaleY(0);
+    opacity: 0;
+    transform-origin: top;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    min-width: 120px;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #FEFDF7;
+}
+
+.dropdown-menu li a:hover {
+    color: #BBE06A;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    transform: translateX(-53%) scaleY(1);
+    opacity: 1;
+}
+
+.dropdown::after {
+    content: "▼";
+    font-size: 0.6em;
+    margin-left: 5px;
+    color: #BBE06A;
+    vertical-align: middle;
+}
+
 /* MAIN CONTENT STYLES */
 main {
     flex: 1;
     padding: 20px;
     text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+main p {
+    text-align: left;
+    width: 100%;
+    line-height: 1.6;
+}
+
+main ul {
+    list-style-type: disc;  
+    padding-left: 40px;    
+    margin: 1em 0;       
+    text-align: left;
+}
+
+main ul li {
+    margin: 0.5em 0;      /* Spacing between list items */
+    line-height: 1.6;     /* Match paragraph line height */
+}
+
+main a {
+    color: #386E8C;
+    text-decoration: none;
+}
+
+main a:hover {
+    color: #EE9292;
+    text-decoration: underline;
 }
 
 /* FORM STYLES */
@@ -86,7 +164,7 @@ main {
     background-color: #EAF0F2;
     border-radius: 8px;
     padding: 20px;
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
 }
 
@@ -335,4 +413,11 @@ footer {
     display: block;
     margin: 0 auto;
     padding: 0;
+}
+
+.info-box {
+    background-color: #EAF0F2;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px;
 }
