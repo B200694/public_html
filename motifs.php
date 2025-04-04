@@ -52,7 +52,7 @@ foreach ($sequences as $seq) {
     // Run patmatmotifs on the temporary FASTA file
     $temp_motif_output_file = "temp/temp_{$session_id}_{$seq['accession_id']}.txt";
     $command = "patmatmotifs -full -sequence $temp_fasta_file -outfile $temp_motif_output_file 2>&1";
-    $output = shell_exec($command);
+    $output = shell_exec($command) ?? '';
 
     // Read the results from the output file
     $lines = file($temp_motif_output_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -117,7 +117,7 @@ if (!isset($_SESSION['temp_files']['data'])) {
 array_unshift($_SESSION['temp_files']['data'], $json_file);
 
 $command = "python3 plot_motifs.py $json_file $session_id";
-$plot_file = trim(shell_exec($command));
+$plot_file = trim(shell_exec($command) ?? '');
 
 // Track the plot file in session
 if (!isset($_SESSION['temp_files']['plots'])) {
@@ -185,6 +185,19 @@ array_unshift($_SESSION['temp_files']['plots'], $plot_file);
         </tbody>
     </table>
     <br><br>
+    <main>
+    <?php if (empty($motif_results)): ?>
+        <div style="text-align: left; color: #386E8C; padding: 20px;">
+            <p><b>No protein motifs were found in these sequences.</b></p>
+            <p>This could be because:</p>
+            <ul>
+                <li>The sequences are too short</li>
+                <li>The sequences don't contain any known PROSITE patterns</li>
+                <li>The motif scanning parameters are too stringent</li>
+            </ul>
+        </div>
+    <?php endif; ?>
+    </main>
     <div class="plot-container">
         <img src="<?php echo htmlspecialchars($plot_file); ?>" alt="Motif Plot">
     </div>
